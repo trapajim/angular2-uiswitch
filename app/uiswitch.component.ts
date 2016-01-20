@@ -3,7 +3,7 @@ import {Component, Input} from 'angular2/core';
 @Component({
   selector: 'uiswitch',
   template: `
-    <input type="checkbox" (click)="_click && onClickHandler()" class="uiswitch" [disabled]="_disabled" [checked]="_checked"/>
+    <input type="checkbox" (click)="_click && !disabled && onClickHandler()" class="uiswitch" [disabled]="_disabled" [checked]="_checked"/>
   `,
   styles: [
    `
@@ -118,10 +118,7 @@ export class UISwitch{
   private _checked: boolean;
   private _click: Function; 
   
-  onClickHandler(){
-    if(this._disabled){
-      return;
-    }
+  onClickHandler(){ 
     this._click();
   }
 }
